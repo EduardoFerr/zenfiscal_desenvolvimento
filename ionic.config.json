@@ -2,5 +2,7 @@
   "name": "zenfiscal",
   "app_id": "143f9b49",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

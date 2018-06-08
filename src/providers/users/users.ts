@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Request, RequestMethod} from '@angular/http';
+import { Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
-let API_URL = 'https://pdv-api.gladiumti.net.br/api/';
+let API_URL = 'https://pdv-api.gladiumti.net.br/api/'
 
 @Injectable()
 export class UsersProvider {
@@ -30,14 +30,24 @@ export class UsersProvider {
   login(data) {
     console.log('provider-users->login('+data+')');
     return new Promise((resolve, reject) => {
-      var headers = new Headers();
-      headers.append('Access-Control-Allow-Origin' , '*');
-      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
-      headers.append('Accept','application/json');
-      headers.append('content-type','application/json');
-      let options = new RequestOptions({ headers:headers,withCredentials: true});
+      let xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+      
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+          console.log(this.responseText);
+        }
+      });
+      
+      xhr.open("GET", "https://pdv-api.gladiumti.net.br/api/autenticacao");
+      xhr.setRequestHeader("usulogin", "demo@varejo.br");
+      xhr.setRequestHeader("senhamd5", "43b4904001fd14f3aeda3c8f90325379");
+      xhr.setRequestHeader("cache-control", "no-cache");
+      xhr.setRequestHeader("postman-token", "ffa3d3cf-cd9d-da82-324d-dffdb5e6cd8c");
+      
+     // xhr.send(data);
 
-      this.http.post(API_URL + 'autenticacao', JSON.stringify(data), {headers: new Headers()})
+      this.http.post(API_URL + 'autenticacao', JSON.stringify(data))
         .subscribe((result: any) => {
           resolve(result.json());
         },
@@ -50,7 +60,7 @@ export class UsersProvider {
   getAll(page: number) {
     return new Promise((resolve, reject) => {
 
-      let url = API_URL + 'users/?per_page=10&page=' + page;
+      let url = API_URL + 'produto/?criterio=10&idProduto=' + page;
 
       this.http.get(url)
         .subscribe((result: any) => {

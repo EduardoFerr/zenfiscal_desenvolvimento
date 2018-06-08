@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Rest Api Example
+      ZenFiscal
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,12 +9,12 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let user of users">
-      <ion-item (click)="openUser(user.id)">
+    <ion-item-sliding *ngFor="let produto of produtos">
+      <ion-item (click)="openProduto(produto.idProduto)">
         <ion-avatar item-start>
-          <img src="{{ user.avatar }}">
+          <img src="{{ produto.arquivo }}">
         </ion-avatar>
-        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        <h2>{{ produto.codProduto }} {{ produto.dscProduto }}</h2>
       </ion-item>
 
       <ion-item-options side="left">

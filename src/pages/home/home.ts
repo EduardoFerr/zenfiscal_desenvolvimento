@@ -17,7 +17,7 @@ export class HomePage {
     this.navCtrl.push('LoginPage');
   }
 
-  openListUsers() {
+  openListProdutos() {
     this.navCtrl.push('UserListPage');
   }
 }

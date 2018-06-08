@@ -3,14 +3,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-user-detail',
-  templateUrl: 'user-detail.html',
+  selector: 'page-produtos-detail',
+  templateUrl: 'produtos-detail.html',
 })
-export class UserDetailPage {
-  user: any;
+export class ProdutosDetailPage {
+  produtos: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.user = this.navParams.data.user;
+    this.produtos = this.navParams.data.produtos;
   }
 
 }

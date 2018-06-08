@@ -12,12 +12,12 @@ export class CreateAccountPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new User();
-    this.model.email = 'sydney@fife';
-    this.model.password = 'pistol';
+    this.model.usuLogin = '';
+    this.model.senhamd5 = '';
   }
 
   createAccount() {
-    this.userProvider.createAccount(this.model.email, this.model.password)
+    this.userProvider.createAccount(this.model.usuLogin, this.model.senhamd5)
       .then((result: any) => {
         this.toast.create({ message: 'Usuário criado com sucesso. Token: ' + result.token, position: 'botton', duration: 3000 }).present();
 
@@ -33,6 +33,6 @@ export class CreateAccountPage {
 }
 
 export class User {
-  email: string;
-  password: string;
+  usuLogin: string;
+  senhamd5: string;
 }
